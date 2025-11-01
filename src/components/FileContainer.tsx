@@ -1,4 +1,3 @@
-import React from 'react'
 import { ArrowDownTrayIcon, TrashIcon } from '@heroicons/react/24/solid'
 
 export const FilesContainer = ({ files }: { files: any[] }) => {
@@ -20,9 +19,6 @@ export const FilesContainer = ({ files }: { files: any[] }) => {
               <div className="flex-shrink-0 ml-4 flex gap-2">
                 <button type="button" title="Download" className="p-2 rounded-md bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white">
                   <ArrowDownTrayIcon className="size-5" />
-                </button>
-                <button type="button" title="Delete" className="p-2 rounded-md bg-red-900/50 text-red-400 hover:bg-red-900/80 hover:text-red-300">
-                  <TrashIcon className="size-5" />
                 </button>
               </div>
             </li>

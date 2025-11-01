@@ -6,7 +6,7 @@ export default function MainPage() {
       
       <header className="absolute inset-x-0 top-0 z-50">
         <div className="flex justify-center items-center p-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-blue-400">
+          <h1 className="text-4xl font-bold text-white">
             EasyTranslate
           </h1>
         </div>
