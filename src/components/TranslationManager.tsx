@@ -1,7 +1,9 @@
+// src/components/TranslationManager.tsx
+
 import React, { useState, useEffect } from 'react'
 import { FileUpload } from './FileUpload'
 import { Notification } from './Notification'
-import { FilesContainer } from './FileContainer';
+import { FilesContainer } from './FileContainer'; // Feltételezem, a fájlneved FilesContainer.tsx
 
 const API_BASE_URL = "http://localhost:8000/api";
 
@@ -68,13 +70,13 @@ export const TranslationManager = () => {
     setNotification({ show: false, message: '', type: 'success' });
 
     if (!selectedFile || selectedFile.size === 0) {
-      setNotification({ show: true, message: 'Nincs fájl kiválasztva.', type: 'error' });
+      setNotification({ show: true, message: 'No file uploaded.', type: 'error' });
       setIsUploading(false);
       return;
     }
     
     if (selectedFile.type !== "text/plain") {
-      setNotification({ show: true, message: 'Csak .txt fájl tölthető fel.', type: 'error' });
+      setNotification({ show: true, message: 'Only .txt formats are permited.', type: 'error' });
       setIsUploading(false);
       return;
     }
@@ -140,7 +142,7 @@ export const TranslationManager = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab('upload')}
-                className={`
+                className={`cursor-pointer
                   ${activeTab === 'upload' 
                     ? 'border-indigo-400 text-white' 
                     : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500'}
@@ -152,7 +154,7 @@ export const TranslationManager = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab('list')}
-                className={`
+                className={`cursor-pointer
                   ${activeTab === 'list' 
                     ? 'border-indigo-400 text-white' 
                     : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500'}
@@ -167,9 +169,15 @@ export const TranslationManager = () => {
             </nav>
           </div>
 
-          <div className="mt-8 h-[400px] overflow-hidden">
+          <div className="mt-8 h-[400px] overflow-hidden relative">
 
-            <div className={activeTab === 'upload' ? 'block h-full overflow-y-auto px-1' : 'hidden'}>
+            <div 
+              className={`
+                absolute inset-0 h-full overflow-y-auto px-1
+                transition-transform duration-300 ease-in-out
+                ${activeTab === 'upload' ? 'translate-x-0' : '-translate-x-full'}
+              `}
+            >
               <FileUpload 
                 isUploading={isUploading}
                 selectedFile={selectedFile}
@@ -183,7 +191,13 @@ export const TranslationManager = () => {
               />
             </div>
             
-            <div className={activeTab === 'list' ? 'block h-full overflow-y-auto px-1' : 'hidden'}>
+            <div 
+              className={`
+                absolute inset-0 h-full overflow-y-auto px-1
+                transition-transform duration-300 ease-in-out
+                ${activeTab === 'list' ? 'translate-x-0' : 'translate-x-full'}
+              `}
+            >
               {isLoadingList ? (
                 <div className="flex justify-center items-center h-full">
                   <p className="text-gray-400 animate-pulse">Loading files...</p>

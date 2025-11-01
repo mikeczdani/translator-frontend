@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { CheckCircleIcon, XCircleIcon, XMarkIcon } from '@heroicons/react/24/solid'
 
 interface NotificationProps {
@@ -19,11 +19,11 @@ export const Notification = ({ message, type, onClose }: NotificationProps) => {
   const isSuccess = type === 'success';
 
   return (
-    <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-md p-4 mt-4">
+    <div className="fixed top-6 right-6 w-full max-w-md">
       <div 
         className={`
           rounded-md p-4 shadow-lg 
-          ${isSuccess ? 'bg-green-600/80 border border-green-400/50' : 'bg-red-600/80 border border-red-400/50'}
+          ${isSuccess ? 'bg-green-600/80 backdrop-blur-md border border-green-400/50' : 'bg-red-600/80 backdrop-blur-md border border-red-400/50'}
         `}
       >
         <div className="flex">
@@ -42,7 +42,7 @@ export const Notification = ({ message, type, onClose }: NotificationProps) => {
               <button
                 type="button"
                 onClick={onClose}
-                className="inline-flex rounded-md p-1.5 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="inline-flex rounded-md p-1.5 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white cursor-pointer"
               >
                 <span className="sr-only">Dismiss</span>
                 <XMarkIcon className="h-5 w-5" aria-hidden="true" />

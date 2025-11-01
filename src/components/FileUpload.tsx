@@ -1,14 +1,22 @@
-// src/components/FileUpload.tsx
-
 import { PhotoIcon, ChevronDownIcon, DocumentIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 
 const targetLanguages = [
-  { code: 'hu', name: 'Hungarian' },
   { code: 'en', name: 'English' },
   { code: 'de', name: 'German' },
-  { code: 'es', name: 'Spanish' },
   { code: 'fr', name: 'French' },
+  { code: 'es', name: 'Spanish' },
+  { code: 'it', name: 'Italian' },
+  { code: 'pt', name: 'Portuguese' },
+  { code: 'pl', name: 'Polish' },
+  { code: 'nl', name: 'Dutch' },
+  { code: 'ja', name: 'Japanese' },
+  { code: 'zh-Hans', name: 'Chinese (Simplified)' },
+  { code: 'hu', name: 'Hungarian' },
+  { code: 'sk', name: 'Slovak' },
+  { code: 'cs', name: 'Czech' },
+  { code: 'ro', name: 'Romanian' },
+  { code: 'uk', name: 'Ukrainian' },
 ]
 
 interface FileUploadProps {
@@ -85,7 +93,7 @@ export const FileUpload = ({
                   className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                 >
                   {targetLanguages.map((lang) => (
-                    <option key={lang.code} value={lang.code}>{lang.name} ({lang.code})</option>
+                    <option key={lang.code} value={lang.code}>{lang.name}</option>
                   ))}
                 </select>
                 <ChevronDownIcon
