@@ -19,7 +19,7 @@ export const Notification = ({ message, type, onClose }: NotificationProps) => {
   const isSuccess = type === 'success';
 
   return (
-    <div className="fixed top-6 right-6 w-full max-w-md">
+    <div className="fixed top-6 right-6 w-full max-w-md z-50">
       <div 
         className={`
           rounded-md p-4 shadow-lg 

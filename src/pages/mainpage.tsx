@@ -22,7 +22,7 @@ export default function MainPage() {
         />
       </div>
       
-      <div className="z-10 w-full flex justify-center">
+      <div className="w-full flex justify-center">
         <TranslationManager />
       </div>
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { FileUpload } from './FileUpload'
 import { Notification } from './Notification'
-import { FilesContainer } from './FileContainer'; // Feltételezem, a fájlneved FilesContainer.tsx
+import { FilesContainer } from './FileContainer';
 
 const API_BASE_URL = "http://localhost:8000/api";
 
@@ -30,7 +30,7 @@ export const TranslationManager = () => {
     try {
       const response = await fetch(`${API_BASE_URL}/get-translated-files`);
       if (!response.ok) {
-        throw new Error("Hiba a fájlok letöltésekor.");
+        throw new Error("Error while loading the files.");
       }
       const data = await response.json();
       setFiles(data);
@@ -95,14 +95,14 @@ export const TranslationManager = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail || "Feltöltési hiba");
+        throw new Error(errorData.detail || "Error while uploading.");
       }
 
       await response.json();
       
       setNotification({ 
         show: true, 
-        message: "Sikeres feltöltés és fordítás!", 
+        message: "Successfully translated and uploaded the file!", 
         type: 'success' 
       });
       resetForm();
@@ -111,7 +111,7 @@ export const TranslationManager = () => {
     } catch (error: any) {
       setNotification({ 
         show: true, 
-        message: `Hiba: ${error.message}`, 
+        message: `Error: ${error.message}`, 
         type: 'error' 
       });
       console.error(error);
